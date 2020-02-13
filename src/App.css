@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
-}
+/* https://themeforest.net/item/frame-business-social-network/14034725 */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  height: 90vh;
+  display: grid;
+  grid-template-areas: 
+  'h h h h h h h h h h h h'
+  'n c c c c c c c c c c c'
+  'n c c c c c c c c c c c'
+  'n c c c c c c c c c c c'
+  'n c c c c c c c c c c c'
+  'n c c c c c c c c c c c'
+  'n c c c c c c c c c c c'
+  'n c c c c c c c c c c c'
+  'n c c c c c c c c c c c'
+  'n c c c c c c c c c c c'
+  'n c c c c c c c c c c c'
+  'n c c c c c c c c c c c'
 }
+.header {
+  grid-area: h;
+  border: 1px solid gray;
+  max-height: 60px;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  background-color: rgb(218, 87, 87);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header img { 
+  max-height: 60px;
 }
+.nav {
+  grid-area: n;
+  border: 1px solid grey;
 
-.App-link {
-  color: #61dafb;
+  background-color: rgb(247, 202, 6);
 }
+.content {
+  grid-area: c;
+  border: 1px solid grey;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  background-color: rgb(21, 240, 32);
 }
