@@ -1,0 +1,13 @@
+.nav {
+    grid-area: n;
+    border: 1px solid grey;
+  
+    background-color: rgb(247, 202, 6);
+}
+.item a {
+  color:white;
+  text-decoration: none;
+}
+.test {
+  font-weight: bolder;
+}
