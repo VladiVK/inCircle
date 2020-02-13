@@ -3,14 +3,19 @@
 .app-wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  height: 90vh;
+  height: 100vh;
+  background: url('./container-background.jpg') no-repeat center center fixed;
+  filter: alpha(opacity=80) black;
+  background-color: #000;
+  background-size: cover;
+
   display: grid;
   grid-template-areas: 
-  'h h'
-  'n c';
-  grid-template-columns: 2fr 10fr;
-  /* 1 строка 60px , а второая все что осталось то 1 часть из 1 */
+  'h h h h h h h h h h h h'
+  'n n c c c c c c c c c c';
   grid-template-rows: 60px 1fr;
+  /* 1 строка 60px , а второая все что осталось то есть 1 часть из 1 */
   
+  /* grid-template-columns: 2fr 10fr; */
   
 }
