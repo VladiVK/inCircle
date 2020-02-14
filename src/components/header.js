@@ -4,11 +4,15 @@ import s from './Header.module.css';
 const Header = () => {
  return (
      <div className={s.header}>
-        <img 
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxzhQTD5lh4K4rrKoIPfEECknug80XROLM-JUgac3EkTa3SwVH"
-          alt="logotype"/>
+       <h1 className={s.header_title}>inCircle</h1>
+       
+        {/* <img 
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSRO3xbF9eTSMiavtJ1pZTkalZB46LqucIt_ArKB08BIbWjX_v6"
+          alt="logotype"
+        /> */}
+        
      </div>
 
  );
 }
-export default Header
+export default Header;

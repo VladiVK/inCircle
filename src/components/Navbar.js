@@ -5,7 +5,7 @@ import s from './Navbar.module.css';
 const Navbar = () => {
     return (
         <nav className= {s.nav}>
-            <div className= {`${s.item} ${s.test}`}>
+            <div className= {s.item}>
                 <a href="">Profile</a>
             </div>
             <div className= {s.item}>
