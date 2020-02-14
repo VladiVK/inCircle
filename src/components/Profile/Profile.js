@@ -10,6 +10,7 @@ const Profile = () => {
         <img src="" alt="" />
       </div>
       <div>avatar + description</div>
+      
       <Myposts />
     </div>
   );
