@@ -1,20 +1,16 @@
 import React from "react";
 import s from './Profile.module.css';
+import Myposts from "./Myposts/Myposts";
 
 const Profile = () => {
   return (
     <div className={s.content}>
-      Main content
+      Demonstration Main content
       <div>
         <img src="" alt="" />
       </div>
       <div>avatar + description</div>
-      <div>
-        My posts
-        <div>New post</div>
-        <div className={s.item}>Post 1</div>
-        <div className={s.item}>Post 2</div>
-      </div>
+      <Myposts />
     </div>
   );
 };

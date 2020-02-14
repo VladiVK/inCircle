@@ -1,12 +1,6 @@
 .content {
-    /* grid-area: c; */
     grid-column: 3 / span 10;
     grid-row: 2 / span 11;
     border: 1px solid rgb(248, 235, 54);
     color: #fff;
-  
-    
-}
-.item {
-  color: yellow;
 }
