@@ -1,0 +1,31 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;column-gap: 5px;
+}
+.dialogsItems {
+    
+    display: grid;
+    justify-content: center;
+    background-color: rgba(240, 244, 247, 0.8);
+    
+    
+}
+/* если внутри .dialogItems есть что-то c классом .active, то ...*/
+.dialogsItems .active {
+    color: rgb(255, 145, 0);
+    font-weight: bolder;
+}
+.dialog {
+    margin: 10px 0;
+    /* border: 1px solid rgb(248, 235, 54); */
+    color: rgb(27, 27, 27);
+}
+
+
+.messages {
+    background-color: rgba(224, 248, 248, 0.5);
+    
+}
+.message {
+
+}
