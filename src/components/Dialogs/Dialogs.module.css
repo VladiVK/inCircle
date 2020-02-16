@@ -6,7 +6,8 @@
     
     display: grid;
     justify-content: center;
-    background-color: rgba(240, 244, 247, 0.8);
+    /* background-color: rgba(240, 244, 247, 0.8); */
+
     
     
 }
@@ -21,13 +22,16 @@
 }
 .dialog {
     margin: 10px 0;
-    /* border: 1px solid rgb(248, 235, 54); */
+    border: 1px solid rgb(248, 235, 54);
     color: rgb(27, 27, 27);
+}
+.dialog a {
+    text-decoration: none;
 }
 
 
 .messages {
-    background-color: rgba(224, 248, 248, 0.5);
+    border-left: 2px solid whitesmoke;
     
 }
 .message {

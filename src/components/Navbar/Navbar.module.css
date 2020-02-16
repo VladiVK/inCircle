@@ -6,14 +6,18 @@
 
     display: grid;
     justify-content: center;
+    align-content: start;
 
     
 }
 
 .item {
-  margin: 10px 0;
-  border: 1px solid rgb(248, 235, 54);
+  margin: 5px 0;
+  /* border: 1px solid rgb(248, 235, 54); */
+  
+  
 }
+
 
 .item:last-child {
   margin-top: 50px;
@@ -21,8 +25,9 @@
 .item a {
   color:white;
   text-decoration: none;
-  
 }
+
+
 .item a.activeLink {
   color: yellow;
   
