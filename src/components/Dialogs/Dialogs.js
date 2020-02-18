@@ -1,21 +1,8 @@
 import React from "react";
 import s from "./Dialogs.module.css";
-import { NavLink } from "react-router-dom";
 
-const DialogItem = (props) => {
-  let path = `/dialogs/${props.id}`;
-  return (
-    <div className={s.dialog}>
-      <NavLink to={path}>{props.name}</NavLink>
-    </div>
-  );
-};
-
-const Message = props => {
-    return (
-        <div className={s.message}>{props.message}</div>
-    );
-};
+import DialogItem from './DialogItem/DialogItem.js';
+import Message from './Message/Message.js'
 
 const Dialogs = (props) => {
 
@@ -34,10 +21,10 @@ const Dialogs = (props) => {
     {id: 4, message: 'Hallo, wie geht es dir'},
     {id: 5, message: 'Hola, como estas'},
   ];
-  const dialogsElements = dialogsData.map( dialog => (<DialogItem name = {dialog.name} />));
-  const messagesElements = messagesData.map( elem => <Message message={elem.message} />);
-  // можно в скоюли обернуть при таком синтаксисе: 
-  // const messagesElements = messagesData.map( elem => (<Message message={elem.message}) />);
+  const dialogsElements = dialogsData.map( d => (<DialogItem name = {d.name} id = {d.id}/>));
+  const messagesElements = messagesData.map( m => <Message message={m.message} />);
+  // можно в скобки обернуть при таком синтаксисе: 
+  // const messagesElements = messagesData.map( m => (<Message message={m.message}) />);
  
   
   
