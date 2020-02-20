@@ -5,18 +5,12 @@ import Post from "./Post/Post.js";
 
 
 const Myposts = (props) => {
-  // const posts = [
-  //   {id: 1, message: 'Hello, glad to see you again!', likesCounter: 12},
-  //   {id: 2, message: 'Good morning', likesCounter: 16},
-  //   {id: 3, message: 'Have a nice day!', likesCounter: 10},
-  //   {id: 4, message: 'How are you?', likesCounter: 11},
-  //   {id: 5, message: 'Where are you?', likesCounter: 0},
-  // ];
-  const postsElements = props.posts.map( p => {
+
+  const postsElements = props.posts.map( post => {
     return (
       <Post 
-        message = {p.message}
-        likesCounter = {p.likesCounter} 
+        message = {post.message}
+        likesCounter = {post.likesCounter} 
       />
       )
   });
