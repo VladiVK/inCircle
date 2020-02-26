@@ -5,7 +5,7 @@ import Post from "./Post/Post.js";
 
 
 const Myposts = (props) => {
-
+  //create array of <Post /> components
   const postsElements = props.posts.map( post => {
     return (
       <Post 
@@ -14,17 +14,23 @@ const Myposts = (props) => {
       />
       )
   });
+  // temp inner functionality
+  let newPostElement = React.createRef();
 
+  const addPost = () => {
+    let text = newPostElement.current.value;
+    alert(text);
+  }
 
   return (
  
       <div className={s.postsBlock}>
         My posts
         <div>
-          <textarea></textarea>
+          <textarea ref={newPostElement}></textarea>
         </div>
         <div>
-          <button>Add Post</button>
+          <button onClick={ addPost }>Add Post</button>
         </div>
         {postsElements}
       
