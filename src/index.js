@@ -1,16 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-/* Import Data from Redux/state.js */
+import * as serviceWorker from './serviceWorker';
+import {rerenderEntireTree} from './render.js'
 import state from './redux/state.js'
 
-ReactDOM.render(
-    <App state={state} />, 
-    document.getElementById('root')
-);
+rerenderEntireTree(state);
+
 
 
 // If you want your app to work offline and load faster, you can change

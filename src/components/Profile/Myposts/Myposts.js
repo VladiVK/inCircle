@@ -19,7 +19,9 @@ const Myposts = (props) => {
 
   const addPost = () => {
     let text = newPostElement.current.value;
-    alert(text);
+    // now call addPost function from state.js
+    props.addPost(text);
+    newPostElement.current.value = '';
   }
 
   return (

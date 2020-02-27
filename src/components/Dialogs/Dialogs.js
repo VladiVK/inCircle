@@ -10,7 +10,14 @@ const Dialogs = (props) => {
   const messagesElements = props.state.messages.map( m => <Message message={m.message} />);
   // можно в скобки обернуть при таком синтаксисе: 
   // const messagesElements = messagesData.map( m => (<Message message={m.message}) />);
- 
+  
+  
+  let newMessageElement = React.createRef();
+  const addMessage = () => {
+      let newMessage = newMessageElement.current.value;
+      newMessageElement.current.value = '';
+      alert(newMessage);
+  }
   
   
   return (
@@ -22,8 +29,17 @@ const Dialogs = (props) => {
 
       <div className={s.messages}>
         {messagesElements}
+        <div>
+          <textarea ref={newMessageElement} cols="20" rows="2"></textarea>
+          <br/>
+          <button onClick={addMessage}>Send message</button>
+        </div>
+         
         
       </div>
+
+     
+      
     </div>
   );
 };
