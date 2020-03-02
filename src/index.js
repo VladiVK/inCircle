@@ -1,7 +1,7 @@
 
 import * as serviceWorker from './serviceWorker';
-import {rerenderEntireTree} from './render.js'
-import state from './redux/state.js'
+import {rerenderEntireTree} from './render.js';
+import state from './redux/state.js';
 
 rerenderEntireTree(state);
 

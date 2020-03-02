@@ -6,30 +6,26 @@ import Post from "./Post/Post.js";
 
 const Myposts = (props) => {
   //create array of <Post /> components
-  const postsElements = props.posts.map( post => {
-    return (
-      <Post 
-        message = {post.message}
-        likesCounter = {post.likesCounter} 
-      />
-      )
-  });
+  const postsElements = props.posts.map( post => <Post message={post.message} likesCounter={post.likesCounter}/>);
   // temp inner functionality
   let newPostElement = React.createRef();
 
   const addPost = () => {
-    let text = newPostElement.current.value;
     // now call addPost function from state.js
-    props.addPost(text);
-    newPostElement.current.value = '';
+    props.addPost();
   }
+
+  let onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.updateNewPostText(text);
+  };
 
   return (
  
       <div className={s.postsBlock}>
         My posts
         <div>
-          <textarea ref={newPostElement}></textarea>
+          <textarea ref={newPostElement} onChange={onPostChange} value={props.newPostText} />
         </div>
         <div>
           <button onClick={ addPost }>Add Post</button>
