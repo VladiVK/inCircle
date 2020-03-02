@@ -27,10 +27,12 @@ const state = {
             {id: 4, message: 'Hallo, wie geht es dir'},
             {id: 5, message: 'Hola, como estas'},
         ],
+        newMessageText: 'default message',
     },
     
   
 };
+/* ================================================================= */
 export const addPost = () => {
  let newPost = {
         id:6,
@@ -43,6 +45,7 @@ export const addPost = () => {
     rerenderEntireTree(state);
     
 };
+
 export const updateNewPostText = (newText) => {
 
     state.profilePage.newPostText = newText;
@@ -50,5 +53,21 @@ export const updateNewPostText = (newText) => {
     // rerender all
     rerenderEntireTree(state);
 };
+/* ================================================================= */
+export const sendMessage = () => {
+    let newMessage = {
+        id: 6,
+        message: state.dialogsPage.newMessageText,
+    };
+    state.dialogsPage.messages.push(newMessage);
+    state.dialogsPage.newMessageText = '';
+    // rerender all
+    rerenderEntireTree(state);
+};
+export const updateNewMessageText = (newMessage) => {
+    state.dialogsPage.newMessageText = newMessage;
+    // rerender all
+    rerenderEntireTree(state);
 
+};
 export default state;

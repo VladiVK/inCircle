@@ -11,12 +11,15 @@ const Dialogs = (props) => {
   // можно в скобки обернуть при таком синтаксисе: 
   // const messagesElements = messagesData.map( m => (<Message message={m.message}) />);
   
-  
+  // our <textarea>
   let newMessageElement = React.createRef();
-  const addMessage = () => {
-      let newMessage = newMessageElement.current.value;
-      newMessageElement.current.value = '';
-      alert(newMessage);
+
+  const sendMessage = () => {
+      props.sendMessage(); 
+  }
+  const onMessageChange = () => {
+    let message = newMessageElement.current.value;
+    props.updateNewMessageText(message);
   }
   
   
@@ -30,9 +33,9 @@ const Dialogs = (props) => {
       <div className={s.messages}>
         {messagesElements}
         <div>
-          <textarea value = {props.newPostText} ref={newMessageElement} cols="20" rows="2" />     
+          <textarea value = {props.state.newMessageText} onChange={onMessageChange} ref={newMessageElement} />     
           <br/>
-          <button onClick={addMessage}>Send message</button>
+          <button onClick={sendMessage}>Send message</button>
         </div>
          
         
