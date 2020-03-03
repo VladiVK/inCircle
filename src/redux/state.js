@@ -1,6 +1,12 @@
 /* Data instead of server Data */
 
-import {rerenderEntireTree} from './../render.js'
+// import {rerenderEntireTree} from './../render.js'
+// это функция-заглушка см ниже функцию subscribe
+let rerenderEntireTree = () => {
+    console.log('state was changed');
+}
+
+
 const state = {
     profilePage: {
         posts: [
@@ -34,8 +40,10 @@ const state = {
 };
 /* ================================================================= */
 export const addPost = () => {
+    let index = Math.max(...state.profilePage.posts.map( post => post.id ) );
+    
  let newPost = {
-        id:6,
+        id:index+1,
         message: state.profilePage.newPostText,
         likesCounter: 0,
     };
@@ -70,4 +78,9 @@ export const updateNewMessageText = (newMessage) => {
     rerenderEntireTree(state);
 
 };
+/* ============================================ */
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer;
+}
 export default state;
