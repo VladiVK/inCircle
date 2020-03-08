@@ -8,25 +8,17 @@ import App from './App';
 /* Import Data from Redux/state.js */
 import store from './redux/state.js';
 
-
-
-
 const rerenderEntireTree = (state) => {
     ReactDOM.render(
-    <App 
-        state={state}
-        addPost={store.addPost.bind(store)}
-        updateNewPostText = {store.updateNewPostText.bind(store)}
-        sendMessage={store.sendMessage.bind(store)}
-        updateNewMessageText={store.updateNewMessageText.bind(store)}
-     />, 
+    <App state = { state } dispatch = { store.dispatch.bind(store) } />, 
     document.getElementById('root')
 );
 }
 
 
-rerenderEntireTree(store.getState());
-store.subscribe(rerenderEntireTree);
+rerenderEntireTree( store.getState() );
+// чтобы переписать функционал в state.js: 
+store.subscribe( rerenderEntireTree );
 
 
 

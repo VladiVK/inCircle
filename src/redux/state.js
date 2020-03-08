@@ -29,54 +29,55 @@ const store = {
             ],
             newMessageText: 'default message',
         },
-        
-      
-    },
-    getState () {
-        return this._state;
-    },
+    }, 
     // это функция-заглушка
     _callSubscriber () {
         console.log('state was changed');
     },
-    addPost () {
-        let index = Math.max(...this._state.profilePage.posts.map( post => post.id ) );
-        
-     let newPost = {
-            id:index+1,
-            message: this._state.profilePage.newPostText,
-            likesCounter: 0,
-        };
-        this._state.profilePage.posts.push( newPost );
-        this._state.profilePage.newPostText = '';
-        // rerender all
-        this._callSubscriber(this._state);
-        
-    },
-    updateNewPostText (newText) {
-        this._state.profilePage.newPostText = newText;
-        // rerender all
-        this._callSubscriber(this._state);
-    },
-    sendMessage () {
-        let newMessage = {
-            id: 6,
-            message: this._state.dialogsPage.newMessageText,
-        };
-        this._state.dialogsPage.messages.push(newMessage);
-        this._state.dialogsPage.newMessageText = '';
-        // rerender all
-        this._callSubscriber(this._state);
-    },
-    updateNewMessageText (newMessage) {
-        this._state.dialogsPage.newMessageText = newMessage;
-        // rerender all
-        this._callSubscriber(this._state);
-    
+
+
+    getState () {
+        return this._state;
     },
     subscribe(observer) {
         this._callSubscriber = observer;
     },
+
+    // dispatch = отправить action = роль объекта в котором указн тип действия и аргументы....
+    // action {type: 'ADD-POST'} или action {type: 'SEND-UPDATE-NEW-POST', MESSAGE: '~ ~ ~ ~'}
+    dispatch (action) {
+        if (action.type === 'ADD-POST') {
+            let index = Math.max(...this._state.profilePage.posts.map( post => post.id ) );
+        
+            let newPost = {
+                id: index + 1,
+                message: this._state.profilePage.newPostText,
+                likesCounter: 0,
+            };
+            this._state.profilePage.posts.push( newPost );
+            this._state.profilePage.newPostText = '';
+            // rerender all
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            // rerender all
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.dialogsPage.newMessageText = action.newMessage;
+            // rerender all
+            this._callSubscriber(this._state);
+        } else if (action.type === 'SEND-MESSAGE') {
+            let newMessage = {
+                id: 6,
+                message: this._state.dialogsPage.newMessageText,
+            };
+            this._state.dialogsPage.messages.push(newMessage);
+            this._state.dialogsPage.newMessageText = '';
+            // rerender all
+            this._callSubscriber(this._state);
+        }
+    },
+  
 }
 
 export default store;
