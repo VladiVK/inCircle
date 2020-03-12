@@ -96,10 +96,10 @@ export const updateNewPostTextActionCreator = (text) => {
         newText: text,
     }
 };
-export const sendMessageActionCreator  = () => {
+export const sendMessageCreator  = () => {
     return { type: SEND_MESSAGE };
 }
-export const updateNewMessageTextActionCreator = (message) => {
+export const updateNewMessageTextCreator = (message) => {
     return {
         type: UPDATE_NEW_MESSAGE_TEXT,
         newMessage: message,

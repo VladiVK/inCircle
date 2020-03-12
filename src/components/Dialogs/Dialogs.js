@@ -3,32 +3,25 @@ import s from "./Dialogs.module.scss";
 
 import DialogItem from './DialogItem/DialogItem.js';
 import Message from './Message/Message.js';
-import {updateNewMessageTextActionCreator, sendMessageActionCreator} from './../../redux/state.js';
+import {updateNewMessageTextCreator, sendMessageCreator} from './../../redux/state.js';
 
 const Dialogs = (props) => {
+  let state = props.store.getState().dialogsPage;
 
-  const dialogsElements = props.state.dialogs.map( d => (<DialogItem name = {d.name} id = {d.id}/>));
-  const messagesElements = props.state.messages.map( m => <Message message={m.message} />);
+  const dialogsElements = state.dialogs.map( d => (<DialogItem name = {d.name} id = {d.id}/>));
+  const messagesElements = state.messages.map( m => <Message message={m.message} />);
   // можно в скобки обернуть при таком синтаксисе: 
   // const messagesElements = messagesData.map( m => (<Message message={m.message}) />);
   
   // our <textarea>
-  let newMessageElement = React.createRef();
+  // let newMessageElement = React.createRef();
 
   const sendMessage = () => {
-      // props.sendMessage(); 
-      // props.dispatch( {type: 'SEND-MESSAGE'} );
-      props.dispatch( sendMessageActionCreator() );
+      props.dispatch( sendMessageCreator() );
   }
-  const onMessageChange = () => {
-    let message = newMessageElement.current.value;
-    // props.updateNewMessageText(message);
-    // let action = {
-    //   type: 'UPDATE-NEW-MESSAGE-TEXT',
-    //   newMessage: message
-    // };
-    // props.dispatch( action );
-    props.dispatch( updateNewMessageTextActionCreator(message) );
+  const onMessageChange = (e) => {
+    let message = e.target.value;
+    props.dispatch( updateNewMessageTextCreator(message) );
   }
   
   
@@ -40,18 +33,16 @@ const Dialogs = (props) => {
       {/* <div className={`${s.dialog} ${s.active}`}> */}
 
       <div className={s.messages}>
-        {messagesElements}
+        <div>{messagesElements}</div>
         <div>
-          <textarea value = {props.state.newMessageText} onChange={onMessageChange} ref={newMessageElement} />     
-          <br/>
-          <button onClick={sendMessage}>Send message</button>
-        </div>
-         
-        
+          <div>
+            <textarea value = {state.newMessageText} onChange={onMessageChange} />
+          </div>     
+          <div>
+            <button onClick={sendMessage}>Send message</button>
+          </div>
+        </div> 
       </div>
-
-     
-      
     </div>
   );
 };
