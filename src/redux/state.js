@@ -1,9 +1,8 @@
-/* Data instead of server Data */
 
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-const SEND_MESSAGE = 'SEND-MESSAGE';
+import profileReducer from '../redux/profile-reducer.js';
+import dialogsReducer from '../redux/dialogs-reducer.js';
+import sidebarReducer from '../redux/sidebarReducer';
+/* Data instead of server Data */
 
 const store = {
     _state: {
@@ -34,6 +33,9 @@ const store = {
             ],
             newMessageText: 'default message',
         },
+        sidebar: {
+
+        },
     }, 
     // это функция-заглушка
     _callSubscriber () {
@@ -48,64 +50,16 @@ const store = {
         this._callSubscriber = observer;
     },
 
-    // dispatch = отправить action = роль объекта в котором указн тип действия и аргументы....
-    // action {type: 'ADD-POST'} или action {type: 'SEND-UPDATE-NEW-POST', MESSAGE: '~ ~ ~ ~'}
     dispatch (action) {
-        if (action.type === ADD_POST) {
-            let index = Math.max(...this._state.profilePage.posts.map( post => post.id ) );
-        
-            let newPost = {
-                id: index + 1,
-                message: this._state.profilePage.newPostText,
-                likesCounter: 0,
-            };
-            this._state.profilePage.posts.push( newPost );
-            this._state.profilePage.newPostText = '';
-            // rerender all
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            // rerender all
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessageText = action.newMessage;
-            // rerender all
-            this._callSubscriber(this._state);
-        } else if (action.type === SEND_MESSAGE ) {
-            let newMessage = {
-                id: 6,
-                message: this._state.dialogsPage.newMessageText,
-            };
-            this._state.dialogsPage.messages.push(newMessage);
-            this._state.dialogsPage.newMessageText = '';
-            // rerender all
-            this._callSubscriber(this._state);
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
+        this._callSubscriber(this._state);
     },
   
 };
-
-export const addPostActionCreator = () => {
-    return {
-        type: ADD_POST,
-    }
-};
-export const updateNewPostTextActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text,
-    }
-};
-export const sendMessageCreator  = () => {
-    return { type: SEND_MESSAGE };
-}
-export const updateNewMessageTextCreator = (message) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newMessage: message,
-    }
-};
-
 
 export default store;
 // window.store = store;
