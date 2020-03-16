@@ -1,7 +1,17 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
-const profileReducer = (state, action) => {
+const initialState = {
+  posts: [
+    {id: 1, message: 'Hello, glad to see you again!', likesCounter: 12},
+    {id: 2, message: 'Good morning', likesCounter: 16},
+    {id: 3, message: 'Have a nice day!', likesCounter: 10},
+    {id: 4, message: 'How are you?', likesCounter: 11},
+    {id: 5, message: 'Where are you?', likesCounter: 0},
+  ],
+  newPostText: 'Hello, friend!',
+};
+const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
       let index = Math.max(...state.posts.map(post => post.id));

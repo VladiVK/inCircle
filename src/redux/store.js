@@ -1,7 +1,7 @@
 
 import profileReducer from './profile-reducer.js';
 import dialogsReducer from './dialogs-reducer.js';
-import sidebarReducer from './sidebarReducer';
+import sidebarReducer from './sidebar-reducer';
 /* Data instead of server Data */
 
 const store = {

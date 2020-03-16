@@ -8,7 +8,8 @@ import './index.css';
 import App from './App';
 
 /* Import Data from Redux/state.js */
-import store from './redux/store.js';
+// import store from './redux/store.js';
+import store from './redux/redux-store.js';
 
 const rerenderEntireTree = (state) => {
     ReactDOM.render(
@@ -22,7 +23,10 @@ const rerenderEntireTree = (state) => {
 
 rerenderEntireTree( store.getState() );
 // чтобы переписать функционал в state.js: 
-store.subscribe( rerenderEntireTree );
+store.subscribe( () => {
+    let state = store.getState();
+    rerenderEntireTree(state);
+});
 
 
 

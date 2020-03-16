@@ -3,7 +3,8 @@ import "./App.css";
 import Header from "./components/Header/Header.js";
 import Navbar from "./components/Navbar/Navbar.js";
 
-import {BrowserRouter, Route } from "react-router-dom";
+// import {BrowserRouter, Route } from "react-router-dom";
+import {Route } from "react-router-dom";
 
 import Profile from "./components/Profile/Profile.js";
 import Dialogs from "./components/Dialogs/Dialogs.js";
