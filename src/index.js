@@ -8,7 +8,7 @@ import './index.css';
 import App from './App';
 
 /* Import Data from Redux/state.js */
-import store from './redux/state.js';
+import store from './redux/store.js';
 
 const rerenderEntireTree = (state) => {
     ReactDOM.render(
